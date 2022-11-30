@@ -34,7 +34,12 @@ const OrderSchema = {
 class Order extends Model {
   static associate(models) {
     this.belongsTo(models.Customer, { as: 'customer' });
-    this.belongsToMany(models.Recipe, {through: models.OrderRecipe})
+    this.belongsToMany(models.Recipe, {
+      as: 'items',
+      through: models.OrderRecipe,
+      foreignKey: 'orderId',
+      otherKey: 'recipeId'
+    })
   }
 
   static config(sequelize) {

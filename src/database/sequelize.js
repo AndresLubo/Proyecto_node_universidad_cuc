@@ -15,7 +15,7 @@ const DB_URL = `postgres://${config.database.user}:${config.database.password}@$
 
 const sequelize = new Sequelize(DB_URL, {
   dialect: 'postgres',
-  logging: false,
+  logging: false
 });
 
 setupModels(sequelize);

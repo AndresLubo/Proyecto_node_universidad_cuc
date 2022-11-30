@@ -12,7 +12,7 @@ app.use(express.json());
 
 RouterApi(app);
 
-app.use(logErrors);
+// app.use(logErrors);
 app.use(ormErrorHandler)
 app.use(boomErrorHandler);
 app.use(errorHandler);
