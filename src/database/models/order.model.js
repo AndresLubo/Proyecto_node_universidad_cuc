@@ -10,10 +10,6 @@ const OrderSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  stock: {
-    allowNull: false,
-    type: DataTypes.INTEGER,
-  },
   state: {
     allowNull: false,
     type: DataTypes.STRING,
