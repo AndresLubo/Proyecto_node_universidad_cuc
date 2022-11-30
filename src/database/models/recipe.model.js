@@ -1,45 +1,40 @@
 const { Model, DataTypes } = require('sequelize');
 
-const DIRECTION_TABLE = 'directions';
+const RECIPE_TABLE = 'recipes';
 
-const DirectionSchema = {
+const RecipeSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  street: {
+  name: {
     allowNull: false,
     type: DataTypes.STRING,
   },
-  race: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  nomenclature: {
+  description: {
     allowNull: false,
     type: DataTypes.STRING,
   },
 };
 
-class Direction extends Model {
+class Recipe extends Model {
   static associate(models) {
-    this.hasOne(models.Customer, { as: 'customer', foreignKey: 'directionId' })
   }
 
   static config(sequelize) {
     return {
       sequelize,
-      tableName: DIRECTION_TABLE,
-      modelName: 'Direction',
+      tableName: RECIPE_TABLE,
+      modelName: 'Recipe',
       timestamps: false,
     };
   }
 }
 
 module.exports = {
-  DIRECTION_TABLE,
-  DirectionSchema,
-  Direction,
+  RECIPE_TABLE,
+  RecipeSchema,
+  Recipe,
 };

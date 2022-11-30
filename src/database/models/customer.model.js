@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { DIRECTION_TABLE } = require('./direction.model');
 
 const CUSTOMER_TABLE = 'customers';
 
@@ -17,15 +18,28 @@ const CustomerSchema = {
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  birthDate: {
+  birth: {
     allowNull: false,
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
+  },
+  directionId: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    field: 'direction_id',
+    references: {
+      model: DIRECTION_TABLE,
+      key: 'id',
+    },
+    unique: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
 };
 
 class Customer extends Model {
   static associate(models) {
-    return models;
+    this.belongsTo(models.Direction, { as: 'direction' });
+    this.hasMany(models.Order, { as: 'order', foreignKey: 'customerId' });
   }
 
   static config(sequelize) {
