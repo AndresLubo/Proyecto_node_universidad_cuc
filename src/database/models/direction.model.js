@@ -1,25 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
 
-const ORDER_TABLE = 'orders';
+const DIRECTION_TABLE = 'directions';
 
-const OrderSchema = {
+const DirectionSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  stock: {
+  street: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
-  state: {
+  race: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
+  nomenclature: {
     allowNull: false,
     type: DataTypes.STRING,
   },
 };
 
-class Order extends Model {
+class Direction extends Model {
   static associate(models) {
     return models;
   }
@@ -27,15 +31,15 @@ class Order extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: ORDER_TABLE,
-      modelName: 'Order',
+      tableName: DIRECTION_TABLE,
+      modelName: 'Direction',
       timestamps: false,
     };
   }
 }
 
 module.exports = {
-  ORDER_TABLE,
-  OrderSchema,
-  Order,
+  DIRECTION_TABLE,
+  DirectionSchema,
+  Direction,
 };
