@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 //? local imports
 const config = require('./config.env/config.js');
 const port = config.app.port;
 const { RouterApi } = require('./router/router.js');
-
 const { boomErrorHandler, errorHandler, logErrors, ormErrorHandler } = require('./middlewares/error.handler');
+
+app.use(cors())
 
 app.use(express.json());
 
