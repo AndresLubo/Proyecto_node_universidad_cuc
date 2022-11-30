@@ -21,6 +21,7 @@ const RecipeSchema = {
 
 class Recipe extends Model {
   static associate(models) {
+    this.belongsToMany(models.Order, {through: models.OrderRecipe})
   }
 
   static config(sequelize) {

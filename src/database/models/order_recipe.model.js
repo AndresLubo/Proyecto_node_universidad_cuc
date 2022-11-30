@@ -40,8 +40,8 @@ const OrderRecipeSchema = {
 
 class OrderRecipe extends Model {
   static associate(models) {
-    this.belongsTo(models.Order, { as: 'orderRecipe' });
-    this.belongsTo(models.Recipe, { as: 'orderRecipe' });
+    // this.belongsTo(models.Order, { as: 'orderRecipe' });
+    // this.belongsTo(models.Recipe, { as: 'orderRecipe' });
   }
 
   static config(sequelize) {
